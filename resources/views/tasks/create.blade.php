@@ -3,7 +3,7 @@
 @section('content')
 
     <h2>タスク新規作成ページ</h2>
-    {!! Form::model($task, ['route' => 'tasklists.store']) !!}
+    {!! Form::model($task, ['route' => 'tasklist.store']) !!}
     
     {!! Form::label('content','タスク') !!}
     {!! Form::text('content') !!}
