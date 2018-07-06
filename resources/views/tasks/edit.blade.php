@@ -6,10 +6,10 @@
 　<h1>{{ $task->id }}番のタスク編集ページ</h1>
 　
 　<!--エラーメッセージを表示-->
-　@if (count($errors) > 0
+　@if(count($errors) > 0)
 　    <ul>
-　        @foreach($errors as $error)
-　            <li>{{ $error}}</li>
+　        @foreach($errors->all() as $error)
+　            <li>{{ $error }}</li>
 　        @endforeach
 　    </ul>
 　@endif
@@ -20,9 +20,8 @@
     {!! Form::text('content') !!}
     
     <!--statusカラムを編集する-->
-    {!! Form::label('status','ステータス' !!}
+    {!! Form::label('status','ステータス') !!}
     {!! Form::text('status') !!}
-    {!! Form::submit('投稿')!!}
     {!! Form::submit('投稿')!!}
 　{!! Form::close() !!}
 

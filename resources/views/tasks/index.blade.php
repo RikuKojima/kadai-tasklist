@@ -3,7 +3,7 @@
 @section('content')
     <ul>
     @foreach ($all_lists as $list)
-        <li>{!! link_to_route('tasklist.show',$list->id,['id'=>$list->id]) !!} : {{ $list->content }} > {{ $task->status }}</li>
+        <li>{!! link_to_route('tasklist.show',$list->id,['id'=>$list->id]) !!} : {{ $list->content }} > {{ $list->status }}</li>
     @endforeach
    </ul>
    {!! link_to_route('tasklist.create','新規タスクの追加')!!}
