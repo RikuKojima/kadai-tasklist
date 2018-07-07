@@ -2,7 +2,8 @@
 
 @section('content')
     <h1>id= {{ $task->id}} の詳細ページ</h1>
-    
+    <div class="row">
+    <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
     <table class="table table-bordered">
         <tr>
             <th>id</th>
@@ -17,6 +18,8 @@
             <td>{{ $task->content }}</td>
         </tr>
     </table>
+    </div>
+    </div>
    
     {!! link_to_route('tasklist.edit', 'このメッセージを編集' ,['id' => $task->id ],['class' => 'btn btn-default']) !!}
     
