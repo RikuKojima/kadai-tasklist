@@ -14,15 +14,23 @@
 　    </ul>
 　@endif
 　
+　<div class="row">
+        <div class="col-xs-6">
 　{!! Form::model($task , ['route' => ['tasklist.update', $task->id], 'method' => 'put']) !!}
 　
-　{!! Form::label('content','タスク') !!}
-    {!! Form::text('content') !!}
+　  <div class="form-group">
+　  {!! Form::label('content','タスク') !!}
+    {!! Form::text('content', null, ['class' => 'form-controll']) !!}
+    </div>
     
     <!--statusカラムを編集する-->
+    <div class="form-group">
     {!! Form::label('status','ステータス') !!}
-    {!! Form::text('status') !!}
-    {!! Form::submit('投稿')!!}
+    {!! Form::text('status',null,  ['class' => 'form-controll']) !!}
+    </div>
+    {!! Form::submit('投稿', ['class' => 'btn btn-primary'])!!}
 　{!! Form::close() !!}
+　  </div>
+　</div>
 
 @endsection
