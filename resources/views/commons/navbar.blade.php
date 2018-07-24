@@ -10,9 +10,23 @@
                 </button>
                 <a class="navbar-brand" href="/">タスク管理</a>
             </div>
+            <!--ログイン判定やら盛り込む-->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+                @if (Auth::check())
+                    <li>{!! link_to_route('users.index', 'Users') !!}</li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle"></a>
+                        <ul class="dropdown-menu">
+                            <li>{!! link_to_route('users.show','My Profile',['id' => Auth::id() ]) !!}</li>
+                            <li role="separater" class="divider"></li>
+                            <li>{!! link_to_route('logout','logout') !!}</li>
+                        </ul>
+                    </li>
+                @else
                     <li>{!! link_to_route('tasklist.create', '新規タスクの投稿') !!}</li>
+                    <li>{!! link_to_route('login','login') !!}</li>
+                @endif
                 </ul>
             </div>
         </div>
