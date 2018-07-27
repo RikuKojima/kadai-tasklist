@@ -14,6 +14,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+     
     protected $fillable = [
         'name', 'email', 'password',
     ];
@@ -28,6 +29,7 @@ class User extends Authenticatable
     ];
     
     public function tasks(){
+        //ユーザ側からタスクに伸びる枝
         return $this->hasMany(Task::class);
     }
 }

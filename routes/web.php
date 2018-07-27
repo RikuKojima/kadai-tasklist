@@ -22,9 +22,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 //ユーザー登録
 //Illuminate\Foundation\Auth\RegistersUsersに中身はある
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
-Route::post('signup', 'Auth\RegisterController@')->name('signup.post');
+Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
 
-
+//ログイン認証のかなめ
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
+    Route::resource('tasklists', 'TasklistController',['only' => ['store','destroy']]);
 });
+

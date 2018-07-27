@@ -14,7 +14,24 @@ class TasklistController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        
+        if(\Auth::check()) {
+            $user = \Auth::User();
+            $tasks = $user->task()->orderBy('created_at','desc')->paginate(10);
+            
+            $data = [
+                'user' => $user,
+                'tasks' => $tasks,
+                //'count_tasks' => 10 みたいなのが入る
+                ];
+            $data += $this->counts($user);
+            //viewの第２引数はビューファイルに値を渡す
+            return view('users.show',$data);
+        }else{
+            return view('welcome');
+        }
+        
         $all_list = Task::all();
         
         return view('tasks.index',['all_lists' => $all_list,]);

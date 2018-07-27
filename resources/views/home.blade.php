@@ -5,7 +5,6 @@
     @if(Auth::check())
         <?php $user = Auth::user() ?>
         {{ $user->name }} 
-    @else
     
         <div class="container">
             <div class="row">

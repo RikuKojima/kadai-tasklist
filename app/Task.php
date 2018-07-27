@@ -10,6 +10,7 @@ class Task extends Model
     protected $fillable = ['content', 'user_id'];
     
     public function user() {
-        return $this->belongsTo(user::class);
+        //タスク側からユーザーに伸びる枝
+        return $this->belongsTo(User::class);
     }
 }

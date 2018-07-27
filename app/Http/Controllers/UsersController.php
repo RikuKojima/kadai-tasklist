@@ -3,21 +3,29 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\user;
+use App\User;
 
 
 class UsersController extends Controller
 {
     //まずは全てのユーザを表示
     public function index() {
-        $users = User::pagenate(10);
+        $users = User::paginate(10);
         
         return view('users.index', ['users' => $users,]);
     }
     
+    $data = []
     public function show($id) {
-        $users = User::find($id);
+        $user = User::find($id);
+        $tasks = $user->task()->orderBy('created_at','desc')->paginate(10);
         
-        return view('users.show',['user' => $users,]);
+        $data = [
+            'user' => $user,
+            'tasks' =>$tasks,
+            ];
+        
+        $data += $this->counts($user);
+        return view('users.show',$data);
     }
 }
