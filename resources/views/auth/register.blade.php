@@ -66,7 +66,12 @@
                                 <button type="submit" class="btn btn-primary">
                                     Register
                                 </button>
+                                or
+                                <a class="btn btn-primary" href="login" role="button">Login</a>
+
+
                             </div>
+                            
                         </div>
                     </form>
                 </div>

@@ -14,17 +14,20 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                 @if (Auth::check())
-                    <li>{!! link_to_route('users.index', 'Users') !!}</li>
                     <li class="dropdown">
-                        <a href="" class="dropdown-toggle"></a>
+                        
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Account
+                        </a>
                         <ul class="dropdown-menu">
                             <li>{!! link_to_route('users.show','My Profile',['id' => Auth::id() ]) !!}</li>
                             <li role="separater" class="divider"></li>
                             <li>{!! link_to_route('logout','logout') !!}</li>
                         </ul>
                     </li>
-                @else
                     <li>{!! link_to_route('tasklist.create', '新規タスクの投稿') !!}</li>
+                @else
+                    
                     <li>{!! link_to_route('signup.get','Signup') !!}</li>
                     <li>{!! link_to_route('login','login') !!}</li>
                 @endif

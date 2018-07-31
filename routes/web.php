@@ -24,6 +24,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
 Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
 
+//ログアウト
+Route::get('logout','HomeController@doLogout');
+
 //ログイン認証のかなめ
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
