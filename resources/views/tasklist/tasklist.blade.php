@@ -8,6 +8,7 @@
             </div>
             <div class="media-body">
                 <div>
+                    <!--users.showの画面を表示-->
                     {!! link_to_route('users.show', $user->name, ['id' => $user->id]) !!} <span class="text-muted">posted at {{ $task->created_at }}</span>
                 </div>
                 <div>
@@ -17,7 +18,7 @@
                     <!--//本人ならば削除ボタン-->
                     @if (Auth::id() == $task->user_id)
                         {!! Form::open(['route' => ['tasklists.destroy', $task->id], 'method' => 'delete']) !!}
-                            {!! Form::submit('Delete',['class' => 'btn btn-danger btn-xs]) !!}
+                            {!! Form::submit('Delete',['class' => 'btn btn-danger btn-xs']) !!}
                         {!! Form::close()!!}
                     @endif
                 </div>
@@ -25,4 +26,5 @@
         </li>
 @endforeach
 </ul>
-{!! $task->render() !!}
+<!--foreachの外にrenderがあることに注意！！ tasksのメソッドである-->
+{!! $tasks->render() !!}

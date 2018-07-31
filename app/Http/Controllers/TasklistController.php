@@ -18,7 +18,7 @@ class TasklistController extends Controller
         
         if(\Auth::check()) {
             $user = \Auth::User();
-            $tasks = $user->task()->orderBy('created_at','desc')->paginate(10);
+            $tasks = $user->tasks()->orderBy('id')->paginate(10);
             
             $data = [
                 'user' => $user,
@@ -27,7 +27,7 @@ class TasklistController extends Controller
                 ];
             $data += $this->counts($user);
             //viewの第２引数はビューファイルに値を渡す
-            return view('users.show',$data);
+            return view('tasks.index',$data);
         }else{
             return view('welcome');
         }
@@ -59,11 +59,15 @@ class TasklistController extends Controller
      */
     public function store(Request $request)
     {
+        // 投稿ボタンが押されると処理はここへ飛ぶ
+        // ここでtaskモデルに中身を詰める
         $this->validate($request, ['content' => 'required|max:191',
                                     'status' => "required",]);
+        
         $task = new Task;
         $task->content = $request->content;
         $task->status = $request->status;
+        $task->user_id = \Auth::id();
         $task->save();
         
         return redirect('/');

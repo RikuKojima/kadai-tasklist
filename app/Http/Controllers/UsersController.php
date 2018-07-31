@@ -15,10 +15,10 @@ class UsersController extends Controller
         return view('users.index', ['users' => $users,]);
     }
     
-    $data = []
+    
     public function show($id) {
         $user = User::find($id);
-        $tasks = $user->task()->orderBy('created_at','desc')->paginate(10);
+        $tasks = $user->tasks()->orderBy('created_at','status')->paginate(10);
         
         $data = [
             'user' => $user,
@@ -26,6 +26,6 @@ class UsersController extends Controller
             ];
         
         $data += $this->counts($user);
-        return view('users.show',$data);
+        return view('tasks.index',$data);
     }
 }
