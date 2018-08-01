@@ -1,3 +1,4 @@
+<!--ログインしているとここに来る-->
 @extends('layouts.app')
 
 @section('content')

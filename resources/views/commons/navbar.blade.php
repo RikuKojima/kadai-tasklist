@@ -15,7 +15,6 @@
                 <ul class="nav navbar-nav navbar-right">
                 @if (Auth::check())
                     <li class="dropdown">
-                        
                         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Account
                         </a>
@@ -27,7 +26,6 @@
                     </li>
                     <li>{!! link_to_route('tasklist.create', '新規タスクの投稿') !!}</li>
                 @else
-                    
                     <li>{!! link_to_route('signup.get','Signup') !!}</li>
                     <li>{!! link_to_route('login','login') !!}</li>
                 @endif

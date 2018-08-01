@@ -33,3 +33,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('tasklists', 'TasklistController',['only' => ['store','destroy']]);
 });
 
+
+Route::get('/err', function () {
+    trigger_error("エラーのテスト!", E_USER_ERROR);
+});
